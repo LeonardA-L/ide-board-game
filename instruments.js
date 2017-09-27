@@ -1,6 +1,6 @@
-var instruments = {
-	melody: {
-		a: {
+var instruments = {	// This group of instruments is actually a group of categories
+	melody: {		// This is a category
+		a: {		// This is the code for the instrument in the category
 			src: "sounds/melody_1.mp3",
 			name: "The Flute",
 			img: "imgs/melody_1.jpg"
