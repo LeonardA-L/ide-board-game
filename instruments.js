@@ -2,31 +2,37 @@ var instruments = {
 	melody: {
 		a: {
 			src: "sounds/melody_1.mp3",
-			name: "The Flute"
+			name: "The Flute",
+			img: "imgs/melody_1.jpg"
 		},
 		b: {
 			src: "sounds/melody_2.mp3",
-			name: "The Violin"
+			name: "The Violin",
+			img: "imgs/melody_2.jpg"
 		}
 	},
 	bass:   {
 		a: {
 			src: "sounds/bass_1.mp3",
-			name: "The Bass"
+			name: "The Bass",
+			img: "imgs/bass_1.jpg"
 		},
 		b: {
 			src: "sounds/bass_2.mp3",
-			name: "The Trumpet"
+			name: "The Trumpet",
+			img: "imgs/bass_2.jpg"
 		}
 	},
 	drums:  {
 		a: {
 			src: "sounds/drum_1.mp3",
-			name: "Kicks"
+			name: "Kicks",
+			img: "imgs/drums_1.jpg"
 		},
 		b: {
 			src: "sounds/drum_2.mp3",
-			name: "Claps"
+			name: "Claps",
+			img: "imgs/drums_2.jpg"
 		}
 	},
 	effects: {}
