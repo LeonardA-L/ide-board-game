@@ -1,35 +1,9 @@
 // 
 var categories = {};
-var instruments = {
-	"melody": [{
-		src: "sounds/melody_1.mp3",
-		name: "The Flute"
-	},
-	{
-		src: "sounds/melody_2.mp3",
-		name: "The Violin"
-	}],
-	"bass":   [{
-		src: "sounds/bass_1.mp3",
-		name: "The Bass"
-	},
-	{
-		src: "sounds/bass_2.mp3",
-		name: "The Trumpet"
-	}],
-	"drums":  [{
-		src: "sounds/drum_1.mp3",
-		name: "Kicks"
-	},
-	{
-		src: "sounds/drum_2.mp3",
-		name: "Claps"
-	}],
-	"effects": []
-};
 
 var loop = false;
 var ended = 0;
+var categoryWrapper = document.getElementById("cat-wrapper");
 
 function createCategory(name) {
 	var category = {
@@ -37,14 +11,20 @@ function createCategory(name) {
 	};
 	var elem = document.createElement("div");
 	elem.classList.add("category");
+	var cardContainer = document.createElement("div");
+	cardContainer.classList.add("card-wrapper");
 	var title = document.createElement("h1");
 	title.innerHTML = name;
-	elem.appendChild(title);
 	var instrElem = document.createElement("span");
+
+	elem.appendChild(title);
 	elem.appendChild(instrElem);
+	elem.appendChild(cardContainer);
 	category.elem = elem;
 	category.title = title;
 	category.instrElem = instrElem;
+	category.cardContainer = cardContainer;
+
 	var audio = document.createElement("audio");
 	category.audio = audio;
 	category.play = function() {
@@ -62,7 +42,7 @@ function createCategory(name) {
 			play();
 		}
 	};
-	document.body.appendChild(elem);
+	categoryWrapper.appendChild(elem);
 	categories[name] = category;
 }
 

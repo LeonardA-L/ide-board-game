@@ -1,9 +1,32 @@
 /**/
+body {
+	margin: 0;
+	padding: 0;
+}
 .category {
 	display: inline-block;
-	width: 20%;
 	height: 100px;
 	background: #AAA;
-	border: solid 1px;
 	vertical-align: top;
+	padding: 20px;
+	flex: 1;
+	height: 90vh;
+}
+
+h1 {
+	margin: 0;
+}
+
+#cat-wrapper {
+	display: flex;
+	flex-direction: row;
+	min-width: 750px;
+}
+
+.card-wrapper {
+	border: solid 1px;
+	box-sizing: border-box;
+	border-radius: 6px;
+	width: 100%;
+	padding-top: 141.6%;
 }
