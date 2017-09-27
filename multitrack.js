@@ -1,9 +1,30 @@
 // 
 var categories = {};
 var instruments = {
-	"melody": ["sounds/melody_1.mp3","sounds/melody_2.mp3"],
-	"bass":   ["sounds/bass_1.mp3", "sounds/bass_2.mp3"],
-	"drums":  ["sounds/drum_1.mp3", "sounds/drum_2.mp3"],
+	"melody": [{
+		src: "sounds/melody_1.mp3",
+		name: "The Flute"
+	},
+	{
+		src: "sounds/melody_2.mp3",
+		name: "The Violin"
+	}],
+	"bass":   [{
+		src: "sounds/bass_1.mp3",
+		name: "The Bass"
+	},
+	{
+		src: "sounds/bass_2.mp3",
+		name: "The Trumpet"
+	}],
+	"drums":  [{
+		src: "sounds/drum_1.mp3",
+		name: "Kicks"
+	},
+	{
+		src: "sounds/drum_2.mp3",
+		name: "Claps"
+	}],
 	"effects": []
 };
 
@@ -16,19 +37,31 @@ function createCategory(name) {
 	};
 	var elem = document.createElement("div");
 	elem.classList.add("category");
+	var title = document.createElement("h1");
+	title.innerHTML = name;
+	elem.appendChild(title);
+	var instrElem = document.createElement("span");
+	elem.appendChild(instrElem);
 	category.elem = elem;
+	category.title = title;
+	category.instrElem = instrElem;
 	var audio = document.createElement("audio");
 	category.audio = audio;
 	category.play = function() {
 		category.audio.currentTime = 0;
 		category.audio.play();
-	}
+	};
+	category.paint = function(){
+		console.log(this)
+		var name = this.instrument ? this.instrument.name : "";
+		this.instrElem.innerHTML = name;
+	};
 	audio.onended = function(){
 		ended--;
 		if(loop && ended === 0){
 			play();
 		}
-	}
+	};
 	document.body.appendChild(elem);
 	categories[name] = category;
 }
@@ -37,13 +70,14 @@ function pick(categoryName, item) {
 	var category = categories[categoryName];
 	var audio = category.audio;
 	if (item < 0 || item >= instruments[categoryName].length){
-		category.src = null;
+		category.instrument = null;
 		audio.src = null;
 	} else{
-		category.src = instruments[categoryName][item];
-		audio.src = category.src;
+		category.instrument = instruments[categoryName][item];
+		audio.src = category.instrument.src;
 		audio.currentTime = 0;
 	}
+	category.paint();
 	pause();
 }
 
@@ -58,7 +92,7 @@ function play() {
 	ended = 0;
 	for(var c in categories){
 		var category = categories[c];
-		if(category.src) {
+		if(category.instrument) {
 			category.play();
 			ended ++;
 		}
