@@ -1,65 +1,68 @@
 // 
-var instruments = [["sounds/melody_1.mp3","sounds/melody_2.mp3"],
-					["sounds/bass_1.mp3", "sounds/bass_2.mp3"],
-					["sounds/drum_1.mp3", "sounds/drum_2.mp3"]];
+var categories = {};
+var instruments = {
+	"melody": ["sounds/melody_1.mp3","sounds/melody_2.mp3"],
+	"bass":   ["sounds/bass_1.mp3", "sounds/bass_2.mp3"],
+	"drums":  ["sounds/drum_1.mp3", "sounds/drum_2.mp3"],
+	"effects": []
+};
 
-var picked = [null, null, null];
-var audios = [];
 var loop = false;
-var cats = 3;
-var ended = cats;
+var ended = 0;
 
-function updateLabels (){
-	var melo = document.getElementById('melo');
-	melo.innerHTML = picked[0] || 'Aucune';
-	var bass = document.getElementById('bass');
-	bass.innerHTML = picked[1] || 'Aucune';
-	var drum = document.getElementById('drum');
-	drum.innerHTML = picked[2] || 'Aucune';
-}
-
-function pick(category, item) {
-	if (item < 0){
-		picked[category] = null;
-	} else{
-		picked[category] = instruments[category][item];
+function createCategory(name) {
+	var category = {
+		name: name
+	};
+	var elem = document.createElement("div");
+	elem.classList.add("category");
+	category.elem = elem;
+	var audio = document.createElement("audio");
+	category.audio = audio;
+	category.play = function() {
+		category.audio.currentTime = 0;
+		category.audio.play();
 	}
-	init();
+	audio.onended = function(){
+		ended--;
+		if(loop && ended === 0){
+			play();
+		}
+	}
+	document.body.appendChild(elem);
+	categories[name] = category;
 }
 
-function init() {
-	updateLabels();
-	audios[0] = document.getElementById('audio-melo');
-	audios[1] = document.getElementById('audio-bass');
-	audios[2] = document.getElementById('audio-drum');
-	for(var i in audios){
-		audios[i].pause();
-		if(picked[i]){
-			audios[i].src = picked[i];
-			audios[i].currentTime = 0;
-		} else {
-			audios[i].src = null;
-		}
-		audios[i].onended = function(){
-			ended--;
-			if(loop && ended === 0){
-				play();
-			}
-		}
+function pick(categoryName, item) {
+	var category = categories[categoryName];
+	var audio = category.audio;
+	if (item < 0 || item >= instruments[categoryName].length){
+		category.src = null;
+		audio.src = null;
+	} else{
+		category.src = instruments[categoryName][item];
+		audio.src = category.src;
+		audio.currentTime = 0;
+	}
+	pause();
+}
+
+function pause() {
+	for(var c in categories){
+		var audio = categories[c].audio;
+		audio.pause();
 	}
 }
 
 function play() {
-	init();
-
-	ended = cats;
-	audios[0].currentTime = 0;
-	audios[1].currentTime = 0;
-	audios[2].currentTime = 0;
-
-	audios[0].play();
-	audios[1].play();
-	audios[2].play();
+	ended = 0;
+	for(var c in categories){
+		var category = categories[c];
+		if(category.src) {
+			category.play();
+			ended ++;
+		}
+	}
 }
 
 function toggleLoop() {
@@ -67,3 +70,10 @@ function toggleLoop() {
 	var elemLoop = document.getElementById('toggle-loop');
 	elemLoop.innerHTML = (loop ? 'Unl' : 'L') + 'oop';
 }
+
+
+// Init
+createCategory("melody");
+createCategory("bass");
+createCategory("drums");
+createCategory("effects");
