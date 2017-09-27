@@ -1,0 +1,35 @@
+<html>
+<head>
+<script src="multitrack.js"></script>
+</head>
+<body>
+	<h1>Melodie</h1>
+	<button onclick="pick(0, 0)">Melo 1</button>
+	<button onclick="pick(0, 1)">Melo 2</button>
+	<button onclick="pick(0, -1)">Aucune</button>
+	<span id="melo"></span>
+	<audio id="audio-melo"></audio>
+	<h1>Basse</h1>
+	<button onclick="pick(1, 0)">Basse 1</button>
+	<button onclick="pick(1, 1)">Basse 2</button>
+	<button onclick="pick(1, -1)">Aucune</button>
+	<span id="bass"></span>
+	<audio id="audio-bass"></audio>
+	<h1>Percu</h1>
+	<button onclick="pick(2, 0)">Percu 1</button>
+	<button onclick="pick(2, 1)">Percu 2</button>
+	<button onclick="pick(2, -1)">Aucune</button>
+	<span id="drum"></span>
+	<audio id="audio-drum"></audio>
+
+	<p>
+		<button onclick="play(false)">Play</button>
+		<button id="toggle-loop" onclick="toggleLoop()">Loop</button>
+		<button onclick="init()">Stop</button>
+	</p>
+
+	<script>
+		updateLabels();
+	</script>
+</body>
+</html>
