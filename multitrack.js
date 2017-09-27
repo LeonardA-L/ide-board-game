@@ -22,10 +22,10 @@ function createCategory(name) {
 	var input = document.createElement("input");
 
 	form.appendChild(input);
-	form.classList.add("card-form");
 	*/
 	var form = document.createElement("input");
-	form.setAttribute("size", 3);
+	form.setAttribute("size", 1);
+	form.classList.add("card-form");
 	form.onchange = function(e) {
 		pick(category, e.target.value);
 	};
@@ -62,6 +62,7 @@ function createCategory(name) {
 
 function pick(category, item) {
 	var categoryName = category.name;
+	item = item.toLowerCase();
 	var audio = category.audio;
 	if (!instruments[categoryName][item]){
 		category.instrument = null;

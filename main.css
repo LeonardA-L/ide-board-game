@@ -32,5 +32,11 @@ h1 {
 }
 
 .card-form {
-	
+	font-size: 30px;
+	text-align: center;
+	margin: 0 auto;
+	display: block;
+	border: none;
+	background-color: #FFF4;
+	color: #EEE;
 }
