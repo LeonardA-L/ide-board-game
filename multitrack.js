@@ -13,13 +13,11 @@ function createCategory(name) {
 	elem.classList.add("category");
 	var cardContainer = document.createElement("div");
 	cardContainer.classList.add("card-wrapper");
+	cardContainer.classList.add("card-wrapper-empty");
 	var img = document.createElement("img");
 	cardContainer.appendChild(img);
 	var title = document.createElement("h1");
 	title.innerHTML = name;
-	var instrElem = document.createElement("p");
-	instrElem.classList.add("card-name");
-	instrElem.innerHTML = "&nbsp;";
 
 	/*var form = document.createElement("form");
 	var input = document.createElement("input");
@@ -34,12 +32,10 @@ function createCategory(name) {
 	};
 
 	elem.appendChild(cardContainer);
-	//elem.appendChild(instrElem);
 	elem.appendChild(title);
 	elem.appendChild(form);
 	category.elem = elem;
 	category.title = title;
-	category.instrElem = instrElem;
 	category.cardContainer = cardContainer;
 	category.img = img;
 
@@ -51,10 +47,13 @@ function createCategory(name) {
 	};
 	category.paint = function(){
 		console.log(this)
-		var name = this.instrument ? this.instrument.name : "&nbsp;";
 		var imgSrc = this.instrument ? this.instrument.img : "";
-		this.instrElem.innerHTML = name;
 		this.img.src = imgSrc;
+		if(this.instrument) {
+			category.cardContainer.classList.remove("card-wrapper-empty");
+		} else {
+			category.cardContainer.classList.add("card-wrapper-empty");
+		}
 	};
 	audio.onended = function(){
 		ended--;
