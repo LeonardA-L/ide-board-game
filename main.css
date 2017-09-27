@@ -2,11 +2,11 @@
 body {
 	margin: 0;
 	padding: 0;
+	background: #5f5f5f;
 }
 .category {
 	display: inline-block;
 	height: 100px;
-	background: #AAA;
 	vertical-align: top;
 	padding: 20px;
 	flex: 1;
@@ -29,4 +29,8 @@ h1 {
 	border-radius: 6px;
 	width: 100%;
 	padding-top: 141.6%;
+}
+
+.card-form {
+	
 }

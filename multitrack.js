@@ -15,11 +15,25 @@ function createCategory(name) {
 	cardContainer.classList.add("card-wrapper");
 	var title = document.createElement("h1");
 	title.innerHTML = name;
-	var instrElem = document.createElement("span");
+	var instrElem = document.createElement("p");
+	instrElem.innerHTML = "&nbsp;";
+
+	/*var form = document.createElement("form");
+	var input = document.createElement("input");
+
+	form.appendChild(input);
+	form.classList.add("card-form");
+	*/
+	var form = document.createElement("input");
+	form.setAttribute("size", 3);
+	form.onchange = function(e) {
+		pick(category, e.target.value);
+	};
 
 	elem.appendChild(title);
-	elem.appendChild(instrElem);
 	elem.appendChild(cardContainer);
+	elem.appendChild(instrElem);
+	elem.appendChild(form);
 	category.elem = elem;
 	category.title = title;
 	category.instrElem = instrElem;
@@ -33,7 +47,7 @@ function createCategory(name) {
 	};
 	category.paint = function(){
 		console.log(this)
-		var name = this.instrument ? this.instrument.name : "";
+		var name = this.instrument ? this.instrument.name : "&nbsp;";
 		this.instrElem.innerHTML = name;
 	};
 	audio.onended = function(){
@@ -46,10 +60,10 @@ function createCategory(name) {
 	categories[name] = category;
 }
 
-function pick(categoryName, item) {
-	var category = categories[categoryName];
+function pick(category, item) {
+	var categoryName = category.name;
 	var audio = category.audio;
-	if (item < 0 || item >= instruments[categoryName].length){
+	if (!instruments[categoryName][item]){
 		category.instrument = null;
 		audio.src = null;
 	} else{
