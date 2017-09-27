@@ -5,13 +5,17 @@ body {
 	background: #5f5f5f;
 	font-family: 'Open Sans',Lato,sans-serif !important;
 }
+
+button {
+	margin: 0;
+	padding: 0;
+}
+
 .category {
 	display: inline-block;
-	height: 100px;
 	vertical-align: top;
 	padding: 20px;
 	flex: 1;
-	height: 90vh;
 }
 
 h1 {
@@ -60,4 +64,30 @@ h1 {
 	top: 0;
 	width: 100%;
 	border-radius: 6px;
+}
+
+.HUD button {
+	border: none;
+	border-radius: 0;
+	width: 100px;
+	height: 42px;
+	font-size: 18px;
+	background-color: #FFFFFF4D;
+	color: #EEE;
+	transition: background-color 0.2s;
+	cursor: pointer;
+}
+
+.rb {
+	margin-right: 7px;
+}
+
+.HUD button:hover {
+	background-color: #FFFFFF1A;
+}
+
+.HUD {
+	margin-top: 55px;
+	text-align: right;
+	padding-right: 100px;
 }
