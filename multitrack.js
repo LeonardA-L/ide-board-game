@@ -13,7 +13,8 @@ Categories are dynamically created below for two reasons
 function createCategory(name) {
 	// Create a model object for the category
 	var category = {
-		name: name
+		name: name,
+		color: categoryColor[name]
 	};
 
 	// Create a HTML element that will represent the category
@@ -31,6 +32,7 @@ function createCategory(name) {
 	var form = document.createElement("input");
 	form.setAttribute("size", 1);	// This sets a HTML attribute
 	form.classList.add("card-form");
+	form.setAttribute("style", "background-color: "+category.color);
 
 	// This is a listener, it listens for a change in the content of the text field
 	form.onchange = function(e) {
@@ -39,8 +41,8 @@ function createCategory(name) {
 	};
 
 	cardContainer.appendChild(img);	// This appends an element into another
+	cardContainer.appendChild(title);
 	elem.appendChild(cardContainer);
-	elem.appendChild(title);
 	elem.appendChild(form);
 
 	// This puts references for each object into the category for further use
