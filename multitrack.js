@@ -10,7 +10,7 @@ Categories are dynamically created below for two reasons
 	- Their number might change
 	- They have a similar design/behaviour, only with changing parameters, so hardcode them would duplicate a lot of code
 */
-function createCategory(name) {
+function createCategory(name, volume) {
 	// Create a model object for the category
 	var category = {
 		name: name,
@@ -53,6 +53,7 @@ function createCategory(name) {
 
 	// Create an HTML5 audio element
 	var audio = document.createElement("audio");
+	audio.volume = volume;
 	// Reference it in the category
 	category.audio = audio;
 	// Create a play function for the category object
@@ -149,7 +150,7 @@ function toggleLoop() {
 
 
 // Init categories
-createCategory("melody");
-createCategory("bass");
-createCategory("drums");
-createCategory("effects");
+createCategory("melody", 1);
+createCategory("bass", 0.7);
+createCategory("effects", 0.2);
+//createCategory("effects");

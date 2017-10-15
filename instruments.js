@@ -1,41 +1,69 @@
 var instruments = {	// This group of instruments is actually a group of categories
 	melody: {		// This is a category
 		"1": {		// This is the code for the instrument in the category
-			src: "sounds/melody_1.mp3",
-			name: "The Flute",
-			img: "imgs/melody_1.jpg"
+			src: "sounds/A1.ogg",
+			img: "imgs/A1.png"
 		},
 		"2": {
-			src: "sounds/melody_2.mp3",
-			name: "The Violin",
-			img: "imgs/melody_2.jpg"
+			src: "sounds/A3.ogg",
+			img: "imgs/A2.png"
+		},
+		"3": {
+			src: "sounds/A3.ogg",
+			img: "imgs/A3.png"
+		},
+		"4": {
+			src: "sounds/A4.ogg",
+			img: "imgs/A4.png"
 		}
 	},
 	bass:   {
 		"1": {
-			src: "sounds/bass_1.mp3",
-			name: "The Bass",
-			img: "imgs/bass_1.jpg"
+			src: "sounds/B1.ogg",
+			img: "imgs/B1.png"
 		},
 		"2": {
-			src: "sounds/bass_2.mp3",
-			name: "The Trumpet",
-			img: "imgs/bass_2.jpg"
+			src: "sounds/B2.ogg",
+			img: "imgs/B2.png"
+		},
+		"3": {
+			src: "sounds/B3.ogg",
+			img: "imgs/B3.png"
+		},
+		"4": {
+			src: "sounds/B4.ogg",
+			img: "imgs/B4.png"
 		}
 	},
-	drums:  {
+	effects:   {
+		"1": {
+			src: "sounds/B3.ogg",
+			img: "imgs/C1.png"
+		},
+		"2": {
+			src: "sounds/B4.ogg",
+			img: "imgs/C2.png"
+		},
+		"3": {
+			src: "sounds/B3.ogg",
+			img: "imgs/C3.png"
+		},
+		"4": {
+			src: "sounds/B4.ogg",
+			img: "imgs/C4.png"
+		}
+	}
+	/*drums:  {
 		"1": {
 			src: "sounds/drum_1.mp3",
-			name: "Kicks",
-			img: "imgs/drums_1.jpg"
+			img: "imgs/drums_1.png"
 		},
 		"2": {
 			src: "sounds/drum_2.mp3",
-			name: "Claps",
-			img: "imgs/drums_2.jpg"
+			img: "imgs/drums_2.png"
 		}
-	},
-	effects: {}
+	},*/
+	//effects: {}
 };
 
 var categoryColor = {
