@@ -153,4 +153,4 @@ function toggleLoop() {
 createCategory("melody", 1);
 createCategory("bass", 0.7);
 createCategory("effects", 0.2);
-//createCategory("effects");
+createCategory("drums", 0.8);
