@@ -95,8 +95,9 @@ function createCategory(name, volume) {
 
 // This function sets an instrument for a category
 function pick(category, instrumentName) {
+	console.log(category, instrumentName)
 	var categoryName = category.name;
-	instrumentName = instrumentName.toLowerCase();	// this is a safety to be case insensitive
+	instrumentName = instrumentName.toUpperCase();	// this is a safety to be case insensitive
 	var audio = category.audio;
 	// check if the instrument actually exists in the list of instruments (this list is in instruments.js)
 	if (!instruments[categoryName][instrumentName]){
@@ -133,7 +134,7 @@ function play() {
 	for(var c in categories){
 		var category = categories[c];
 		// if the category has an instrument set, play
-		if(category.instrument) {
+		if(category.instrument && category.instrument.src) {
 			category.play();
 			// Update the number of audio streams
 			ended ++;
